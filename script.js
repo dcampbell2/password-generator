@@ -14,29 +14,39 @@ function generatePassword() {
     prompt("Enter a number for how long you would like your password to be?")
   );
 
-  var values = "ABCDEFGHIJKLMNOPQRSTUCWXYZ0123456789!@#$%^&*()+|?/";
+  var values = "ABCDEFGHIJKLMNOPQRSTUCWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()+|?/.,:'><[{]}`~";
 
-  var confirmUpperCase = confirm(
-    "Click OK to confirm the use of upper case letters."
-  );
+  // if statement to validate user input in howLong variable
 
-  var confirmLowerCase = confirm(
-    "Click OK to confirm the use of lowercase letters."
-  );
-
-  var confirmNumbers = confirm("Click OK to confirm the use of whole numbers.");
-
-  var confirmCharacters = confirm(
-    "Click OK to confirm the use of special characters."
-  );
-
-  // variable to be used to return value of for loop
-  var retVal = "";
-
+  if(howLong < 8){
+    alert("Password must be longer than 8 characters.");
+    return "";
+  } else if(howLong > 129){
+    alert("Password cannot be greater than 129 Characters");
+    return "";
+  }else{
+    var confirmUpperCase = confirm(
+      "Click OK to confirm the use of upper case letters."
+    );
   
-  for (var i = 0; i < howLong; i++) {
-    // picks random characters from the "values" variables beginning at index of a random number
-    retVal += values.charAt(Math.floor(Math.random() * values.length));
+    var confirmLowerCase = confirm(
+      "Click OK to confirm the use of lowercase letters."
+    );
+  
+    var confirmNumbers = confirm("Click OK to confirm the use of whole numbers.");
+  
+    var confirmCharacters = confirm(
+      "Click OK to confirm the use of special characters."
+    );
+  
+    // variable to be used to return value of for loop
+    var retVal = "";
+  
+    
+    for (var i = 0; i < howLong; i++) {
+      // picks random characters from the "values" variables beginning at index of a random number
+      retVal += values.charAt(Math.floor(Math.random() * values.length));
+    }
   }
   return retVal;
 }
